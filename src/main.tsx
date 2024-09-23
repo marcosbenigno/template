@@ -1,6 +1,7 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
+import { HashRouter, Route, Routes } from "react-router-dom"  // Import HashRouter
 import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
@@ -13,7 +14,11 @@ if (container) {
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <HashRouter>  {/* Wrap App with HashRouter */}
+          <Routes>
+        <Route path="/" element={<App />}/>
+        </Routes>
+        </HashRouter>
       </Provider>
     </React.StrictMode>,
   )
