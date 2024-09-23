@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "start": "electron-forge start",
-    "build": "tsc && vite build",
+    "build": "tsc -b && vite build",
     "electron": "electron .",
     "preview": "vite preview",
     "test": "vitest run",
@@ -21,7 +21,9 @@
     "type-check": "tsc --noEmit",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "serve": "serve -s dist"
+    "serve": "serve -s dist",
+	"both": "concurrently \"yarn dev\" \"wait-on http://localhost:5173 && yarn electron-forge start\"",
+	"both:build": "yarn build && yarn make"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
